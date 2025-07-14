@@ -38,7 +38,7 @@ namespace FlappyBirdClone.Services
             float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             var keyboardState = Keyboard.GetState();
-
+            /*
             if (keyboardState.IsKeyDown(Keys.W))
             {
                 _player.Direction += MovementDirection.Up;
@@ -47,6 +47,7 @@ namespace FlappyBirdClone.Services
             {
                 _player.Direction += MovementDirection.Down;
             }
+            */
             if (keyboardState.IsKeyDown(Keys.A))
             {
                 _player.Direction += MovementDirection.Left;
@@ -55,15 +56,25 @@ namespace FlappyBirdClone.Services
             {
                 _player.Direction += MovementDirection.Right;
             }
+            if (keyboardState.IsKeyDown(Keys.Space) && _player.InAir == false)
+            {
+                _player.InAir = true;
+                _player.Jump(dt);
+            }
+            if (_player.InAir == true)
+            {
+                _player.Velocity += new Vector2(0, _player.Gravity * dt);
+                _player.Position += _player.Velocity * dt;
+            }
 
+            
             if (_player.Direction != Vector2.Zero)
             {
                 //Normalize diagonal movement so that it is the same speed!!
                 _player.Direction = Vector2.Normalize(_player.Direction);
 
-                Debug.WriteLine($"Direction after: {_player.Direction}");
 
-                _player.Position += _player.Direction * _player.Speed * dt;
+                _player.Position += _player.Direction * _player.Speed *dt;
             }
 
 

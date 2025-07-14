@@ -1,9 +1,11 @@
 ﻿using FlappyBirdClone.Entities;
+using FlappyBirdClone.Environment;
 using FlappyBirdClone.Services;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace FlappyBirdClone
@@ -13,22 +15,34 @@ namespace FlappyBirdClone
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Player _player;
-
+        private Platform _platform;
+        public static int screenWidth;
+        public static int screenHeight;
+        private Texture2D pixel;
 
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
-           
+            
+
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _player = new Player();
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.ApplyChanges();
+            screenWidth = GraphicsDevice.Viewport.Width;
+            screenHeight = GraphicsDevice.Viewport.Height;
+            _player = new Player(new Vector2(0, screenHeight - 400));
+            _platform = new Platform();
             var input = new InputManager(this, _player);
+            var collision = new CollisionManager(this, _player, _platform);
             Components.Add(input);
+            Components.Add(collision);
 
             base.Initialize();
         }
@@ -38,8 +52,13 @@ namespace FlappyBirdClone
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
 
-            _player.Texture = Content.Load<Texture2D>("ball");
             
+
+            
+            pixel = new Texture2D(GraphicsDevice, 1, 1);
+            pixel.SetData(new[] { Color.White }); // white pixel
+            _player.Texture = pixel;
+
 
             // TODO: use this.Content to load your game content here
         }
@@ -49,6 +68,8 @@ namespace FlappyBirdClone
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            _player.CollisionBox = new Rectangle((int)_player.Position.X, (int)_player.Position.Y, 50, 100);
+            Debug.WriteLine(_player.Position.X);
             
 
             // TODO: Add your update logic here
@@ -64,9 +85,8 @@ namespace FlappyBirdClone
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-
-            Console.WriteLine(_player.Position.X);
-            _spriteBatch.Draw(_player.Texture, _player.Position, Color.White);
+            _spriteBatch.Draw(pixel, _platform.CollisionBox, Color.Black);
+            _spriteBatch.Draw(_player.Texture, _player.CollisionBox,  Color.White);
             _spriteBatch.End();
             
             base.Draw(gameTime);

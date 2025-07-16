@@ -1,5 +1,6 @@
 ﻿using FlappyBirdClone.Entities;
 using FlappyBirdClone.Environment;
+using FlappyBirdClone.Objects;
 using FlappyBirdClone.Services;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,7 +20,9 @@ namespace FlappyBirdClone
         public static int screenWidth;
         public static int screenHeight;
         private Texture2D pixel;
+        private Level level;
 
+        private Camera camera;
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -37,8 +40,10 @@ namespace FlappyBirdClone
             _graphics.ApplyChanges();
             screenWidth = GraphicsDevice.Viewport.Width;
             screenHeight = GraphicsDevice.Viewport.Height;
-            _player = new Player(new Vector2(0, screenHeight - 400));
+            _player = new Player(new Vector2(0,0));
             _platform = new Platform();
+            camera = new Camera(this);
+            level = new Level(Tilemap.CreateTilemap());
             var input = new InputManager(this, _player);
             var collision = new CollisionManager(this, _player, _platform);
             Components.Add(input);
@@ -70,6 +75,11 @@ namespace FlappyBirdClone
 
             _player.CollisionBox = new Rectangle((int)_player.Position.X, (int)_player.Position.Y, 50, 100);
             Debug.WriteLine(_player.Position.X);
+
+
+            
+            camera.Position = _player.Position;
+
             
 
             // TODO: Add your update logic here
@@ -84,8 +94,14 @@ namespace FlappyBirdClone
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin();
-            _spriteBatch.Draw(pixel, _platform.CollisionBox, Color.Black);
+            _spriteBatch.Begin(transformMatrix: camera.GetTranslationMatrix());
+            //_spriteBatch.Draw(pixel, _platform.CollisionBox, Color.Black);
+            //Try out the basic tile map
+            for (int i =0; i < 128; i ++)
+            {
+                var tile = level.Tilemap.GetTile(i, 59);
+                _spriteBatch.Draw(pixel, tile.BoundingBox, Color.Black);
+            }
             _spriteBatch.Draw(_player.Texture, _player.CollisionBox,  Color.White);
             _spriteBatch.End();
             

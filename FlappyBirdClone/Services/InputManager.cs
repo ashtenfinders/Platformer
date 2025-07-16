@@ -18,6 +18,9 @@ namespace FlappyBirdClone.Services
 
         private Player _player;
 
+
+        
+
         public InputManager(Game game, Player player) : base(game)
         {
             _player = player;
@@ -51,6 +54,7 @@ namespace FlappyBirdClone.Services
             if (keyboardState.IsKeyDown(Keys.A))
             {
                 _player.Direction += MovementDirection.Left;
+
             }
             if (keyboardState.IsKeyDown(Keys.D))
             {

@@ -64,5 +64,11 @@ namespace FlappyBirdClone.Objects
         {
             return Tiles.GetValueOrDefault(new Point(x,y));
         }
+        public Tile GetTileFromWorldPosition(Vector2 worldPosition)
+        {
+            
+                return GetTile((int)worldPosition.X / Tile.Width,
+                (int)worldPosition.Y / Tile.Height);
+        }
     }
 }

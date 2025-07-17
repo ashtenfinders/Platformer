@@ -10,12 +10,12 @@ namespace FlappyBirdClone.Objects
     public class Tile
     {
         //64 x 60 dimensions for screen tile map requires these dimensions for the tile size
-        public int Width { get; set; } = 30;
-        public int Height { get; set; } = 16;
+        public static int Width { get; set; } = 30;
+        public static int Height { get; set; } = 16;
         public Rectangle BoundingBox { get; set; }
 
         //Whether or not the player can pass through this tile
-        public bool IsPassable { get; set; }
+        public bool IsPassable { get; set; } = false;
 
         public Tile (Point point)
         {

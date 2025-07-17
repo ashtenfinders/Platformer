@@ -46,6 +46,7 @@ namespace FlappyBirdClone
             level = new Level(Tilemap.CreateTilemap());
             var input = new InputManager(this, _player);
             var collision = new CollisionManager(this, _player, _platform);
+            
             Components.Add(input);
             Components.Add(collision);
 
@@ -56,13 +57,22 @@ namespace FlappyBirdClone
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            var layer = new LayerManager(this, _spriteBatch);
+            var background = new BackgroundLayer();
 
-            
 
-            
             pixel = new Texture2D(GraphicsDevice, 1, 1);
             pixel.SetData(new[] { Color.White }); // white pixel
             _player.Texture = pixel;
+
+            background.Texture = pixel;
+            layer.AddLayer(background);
+            Components.Add(layer);
+
+
+
+
+
 
 
             // TODO: use this.Content to load your game content here
@@ -99,7 +109,7 @@ namespace FlappyBirdClone
             //Try out the basic tile map
             for (int i =0; i < 128; i ++)
             {
-                var tile = level.Tilemap.GetTile(i, 59);
+                var tile = level.Tilemap.GetTile(i, 58);
                 _spriteBatch.Draw(pixel, tile.BoundingBox, Color.Black);
             }
             _spriteBatch.Draw(_player.Texture, _player.CollisionBox,  Color.White);

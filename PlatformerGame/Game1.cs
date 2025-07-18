@@ -14,7 +14,7 @@ using PlatformerGame.Services;
 namespace PlatformerGame
 {
     public class Game1 : Game
-    {
+    {//////
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Player _player;

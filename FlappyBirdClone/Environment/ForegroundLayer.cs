@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static FlappyBirdClone.Environment.Layer;
+using static Platformer.Environment.Layer;
 
-namespace FlappyBirdClone.Environment
+namespace Platformer.Environment
 {
     public class ForegroundLayer : Layer
     {

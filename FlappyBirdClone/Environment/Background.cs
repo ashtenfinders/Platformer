@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlappyBirdClone.Environment
+namespace Platformer.Environment
 {
     public class Background
     {

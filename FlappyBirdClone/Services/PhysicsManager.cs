@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlappyBirdClone.Services
+namespace Platformer.Services
 {
     public class PhysicsManager
     {

@@ -1,14 +1,15 @@
-﻿using FlappyBirdClone.Environment;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Platformer.Environment;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlappyBirdClone.Services
+namespace Platformer.Services
 {
     public class LayerManager : DrawableGameComponent
     {
@@ -37,6 +38,7 @@ namespace FlappyBirdClone.Services
 
                 _spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
                 //_spriteBatch.Draw();
+                Debug.WriteLine(layer.Depth);
                 _spriteBatch.Draw(layer.Texture, new Rectangle(0,0,Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height ),null,Color.Blue, 0f, Vector2.Zero, SpriteEffects.None, layer.Depth);
                 _spriteBatch.End();
                 

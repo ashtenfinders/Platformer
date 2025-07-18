@@ -1,2 +1,2 @@
-﻿using var game = new FlappyBirdClone.Game1();
+﻿using var game = new Platformer.Game1();
 game.Run();

@@ -1,15 +1,17 @@
-﻿using FlappyBirdClone.Entities;
-using FlappyBirdClone.Environment;
-using FlappyBirdClone.Objects;
-using FlappyBirdClone.Services;
+﻿
+using Platformer.Environment;
+using Platformer.Services;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Platformer.Entities;
+
+using Platformer.Objects;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
-namespace FlappyBirdClone
+namespace Platformer
 {
     public class Game1 : Game
     {

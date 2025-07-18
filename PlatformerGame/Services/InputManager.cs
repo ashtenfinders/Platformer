@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using Platformer.Entities;
+using PlatformerGame.Entities;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platformer.Services
+namespace PlatformerGame.Services
 {
     /**
      * Note: This manager currently only works for the keyboard!

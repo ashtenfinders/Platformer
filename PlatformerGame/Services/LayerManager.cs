@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Platformer.Environment;
+using PlatformerGame.Environment;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platformer.Services
+namespace PlatformerGame.Services
 {
     public class LayerManager : DrawableGameComponent
     {

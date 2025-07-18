@@ -1,17 +1,17 @@
 ﻿
-using Platformer.Environment;
-using Platformer.Services;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Platformer.Entities;
-
-using Platformer.Objects;
 using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using PlatformerGame.Entities;
+using PlatformerGame.Objects;
+using PlatformerGame.Environment;
+using PlatformerGame.Services;
 
-namespace Platformer
+namespace PlatformerGame
 {
     public class Game1 : Game
     {

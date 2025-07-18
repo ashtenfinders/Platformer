@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platformer.Services
+namespace PlatformerGame.Services
 {
     public class PhysicsManager
     {

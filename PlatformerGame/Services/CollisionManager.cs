@@ -1,13 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using Platformer.Entities;
-using Platformer.Environment;
+using PlatformerGame.Entities;
+using PlatformerGame.Environment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platformer.Services
+namespace PlatformerGame.Services
 {
     public class CollisionManager : GameComponent
     {

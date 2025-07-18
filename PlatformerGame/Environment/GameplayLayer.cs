@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Platformer.Environment.Layer;
+using static PlatformerGame.Environment.Layer;
 
-namespace Platformer.Environment
+namespace PlatformerGame.Environment
 {
     public class GameplayLayer : Layer
     {

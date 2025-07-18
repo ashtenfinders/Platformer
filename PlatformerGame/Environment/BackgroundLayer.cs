@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Platformer.Environment
+namespace PlatformerGame.Environment
 {
     /// <summary>
     /// Might need to update this so that i can have elements in the layer move at different speeds

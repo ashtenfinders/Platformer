@@ -1,5 +1,4 @@
 ﻿
-
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -14,7 +13,7 @@ using PlatformerGame.Services;
 namespace PlatformerGame
 {
     public class Game1 : Game
-    {//////
+    {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Player _player;
@@ -23,6 +22,9 @@ namespace PlatformerGame
         public static int screenHeight;
         private Texture2D pixel;
         private Level level;
+
+
+
 
         private Camera camera;
         public Game1()

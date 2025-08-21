@@ -10,14 +10,12 @@ namespace PlatformerCore.Objects
 {
     public class Sprite
     {
-        //Since position is not a part of the sprite class, I have the ability to for duplicate sprites, not create multiple instances for just a duplicate in a different position
-
 
         /// <summary>
         /// Gets or Sets the source texture region represented by this sprite.
         /// </summary>
-        //public TextureRegion Region { get; set; }
-        public Texture2D Texture { get; set; }
+        public TextureRegion Region { get; set; }
+
         /// <summary>
         /// Gets or Sets the color mask to apply when rendering this sprite.
         /// </summary>
@@ -72,9 +70,7 @@ namespace PlatformerCore.Objects
         /// <remarks>
         /// Width is calculated by multiplying the width of the source texture region by the x-axis scale factor.
         /// </remarks>
-
-        public float Width => Texture.Width * Scale.X;
-        //public float Width => Region.Width * Scale.X;
+        public float Width => Region.Width * Scale.X;
 
         /// <summary>
         /// Gets the height, in pixels, of this sprite.
@@ -82,8 +78,9 @@ namespace PlatformerCore.Objects
         /// <remarks>
         /// Height is calculated by multiplying the height of the source texture region by the y-axis scale factor.
         /// </remarks>
-        //public float Height => Region.Height * Scale.Y;
-        public float Height => Texture.Height * Scale.Y;
+        public float Height => Region.Height * Scale.Y;
+
+
 
         /// <summary>
         /// Creates a new sprite.
@@ -94,13 +91,10 @@ namespace PlatformerCore.Objects
         /// Creates a new sprite using the specified source texture region.
         /// </summary>
         /// <param name="region">The texture region to use as the source texture region for this sprite.</param>
-        //public Sprite(TextureRegion region)
-        public Sprite(Texture2D texture)
+        public Sprite(TextureRegion region)
         {
-            //Region = region;
-            Texture = texture;
+            Region = region;
         }
-
 
 
         /// <summary>
@@ -108,8 +102,7 @@ namespace PlatformerCore.Objects
         /// </summary>
         public void CenterOrigin()
         {
-            //Origin = new Vector2(Sprite.Width, Region.Height) * 0.5f;
-            Origin = new Vector2(Width, Height) * 0.5f;
+            Origin = new Vector2(Region.Width, Region.Height) * 0.5f;
         }
 
         /// <summary>
@@ -117,11 +110,11 @@ namespace PlatformerCore.Objects
         /// </summary>
         /// <param name="spriteBatch">The SpriteBatch instance used for batching draw calls.</param>
         /// <param name="position">The xy-coordinate position to render this sprite at.</param>
-        public virtual void Draw(SpriteBatch spriteBatch, Vector2 position)
+        public void Draw(SpriteBatch spriteBatch, Vector2 position)
         {
-            //Region.Draw(spriteBatch, position, Color, Rotation, Origin, Scale, Effects, LayerDepth);
-            
-            spriteBatch.Draw(Texture, position, null, Color, Rotation, Origin, Scale, Effects, LayerDepth);
+            Region.Draw(spriteBatch, position, Color, Rotation, Origin, Scale, Effects, LayerDepth);
         }
+
     }
+
 }

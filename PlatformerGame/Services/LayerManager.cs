@@ -39,7 +39,7 @@ namespace PlatformerGame.Services
                 _spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
                 //_spriteBatch.Draw();
                 Debug.WriteLine(layer.Depth);
-                _spriteBatch.Draw(layer.Texture, new Rectangle(0,0,Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height ),null,Color.Blue, 0f, Vector2.Zero, SpriteEffects.None, layer.Depth);
+                //_spriteBatch.Draw(layer.Texture, new Rectangle(0,0,Game.GraphicsDevice.Viewport.Width, Game.GraphicsDevice.Viewport.Height ),null,Color.Blue, 0f, Vector2.Zero, SpriteEffects.None, layer.Depth);
                 _spriteBatch.End();
                 
             }
